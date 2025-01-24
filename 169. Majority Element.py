@@ -12,13 +12,17 @@ from typing import List
 
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        n = len(nums)
-        majority_element = None
-        for num in set(nums):
-            if nums.count(num) > n / 2:
-                majority_element = num
+        count = 0
+        majority_element = nums[0]
 
+        for n in nums:
+            if count == 0:
+                majority_element = n
+            count += (1 if n == majority_element else -1)
+        
         return majority_element
+
+
 
 
 s = Solution()
