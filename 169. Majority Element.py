@@ -19,10 +19,8 @@ class Solution:
             if count == 0:
                 majority_element = n
             count += (1 if n == majority_element else -1)
-        
+
         return majority_element
-
-
 
 
 s = Solution()
