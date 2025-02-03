@@ -10,18 +10,17 @@ from typing import List
 
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        step = 0
-        for i, n in enumerate(nums):
-            if i > step:
-                return False
-            step = max(step, i + n)
+        curGoal = len(nums)-1
+        for i in range(len(nums)-2, -1, -1):
+            if nums[i] + i >= curGoal:
+                curGoal = i
 
-        return True
+        return True if curGoal == 0 else False
 
 
 s = Solution()
-print(s.canJump([3, 2, 1, 0, 4]))   # False
-print(s.canJump([2, 3, 1, 1, 4]))   # True
+# print(s.canJump([3, 2, 1, 0, 4]))   # False
+# print(s.canJump([2, 3, 1, 1, 4]))   # True
 print(s.canJump([2, 0]))            # True
 print(s.canJump([0]))                # True
 
